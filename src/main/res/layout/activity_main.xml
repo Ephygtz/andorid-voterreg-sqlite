@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tbeta.ephraim.voterregsqlite.MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#a7b30c"
+        android:layout_alignParentTop="true"
+        android:text="Voter Registration with DATA persistence - SQLITE"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"/>
+
+    <EditText
+        android:id="@+id/nameEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Enter Your Name"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <EditText
+        android:id="@+id/emailEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="Enter Your Email"
+        android:inputType="textEmailAddress"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_below="@+id/nameEdt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <EditText
+        android:id="@+id/idEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter Your ID No."
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_below="@+id/emailEdt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:id="@+id/linearLayout"
+        android:layout_below="@+id/idEdt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="0dp"
+            android:id="@+id/saveBtn"
+            android:text="SAVE"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="#5fbe06"
+            android:layout_height="90dp"/>
+        <Button
+            android:layout_width="0dp"
+            android:id="@+id/viewBtn"
+            android:text="VIEW"
+            android:background="#ea9409"
+            android:layout_weight="1"
+            android:layout_height="90dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="0dp"
+            android:id="@+id/searchBtn"
+            android:text="SEARCH A RECORD"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="#3b0eed"
+            android:layout_height="90dp"/>
+        <Button
+            android:layout_width="0dp"
+            android:id="@+id/delBtn"
+            android:text="DELETE A RECORD"
+            android:background="#ea090d"
+            android:layout_weight="1"
+            android:layout_height="90dp"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
