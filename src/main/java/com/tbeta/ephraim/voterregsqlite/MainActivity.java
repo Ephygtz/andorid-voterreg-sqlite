@@ -1,5 +1,6 @@
 package com.tbeta.ephraim.voterregsqlite;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         // Query to create a TABLE with three columns
         db.execSQL("CREATE TABLE IF NOT EXISTS voterreg(name VARCHAR, email VARCHAR, idNo VARCHAR)");
 
+        //Save data to the DB
         mSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,11 +56,44 @@ public class MainActivity extends AppCompatActivity {
                     // Insert data to DB
                     db.execSQL("INSERT INTO voterreg VALUES('"+mName.getText()+"', '"+mEmail.getText()+"', '"+mId.getText()+"')");
                     errorMessage("QUERY SUCCESS", "Data was succesfully saved");
+                    clear();
                 }
+            }
+        });
+
+
+        // Query and view record in the DB
+        mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor cursor = db.rawQuery("SELECT * FROM voterreg", null);
+
+                // Check if there's any record
+                if(cursor.getCount() == 0) {
+                    errorMessage("NO RECORDS", "Sorry, no records found");
+                }
+
+                //Use Buffer to append the records
+                StringBuffer buffer = new StringBuffer();
+
+
+                while(cursor.moveToNext()){
+                    buffer.append("Name is: " + cursor.getString(0));
+                    buffer.append("\n");
+                    buffer.append("Email is: " + cursor.getString(1));
+                    buffer.append("\n");
+                    buffer.append("ID is: " + cursor.getString(2));
+                    buffer.append("\n");
+                }
+                errorMessage("DATABASE RECORDS", buffer.toString());
+
             }
         });
     }
 
+
+
+    //Error message display
     public  void errorMessage(String title, String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
@@ -66,6 +101,20 @@ public class MainActivity extends AppCompatActivity {
         builder.setMessage(message);
         builder.show();
     }
+
+    //Clear the editext field after saving
+    public void clear(){
+        mName.setText("");
+        mEmail.setText("");
+        mId.setText("");
+    }
+
+
+
+
+
+
+
 
 
 
